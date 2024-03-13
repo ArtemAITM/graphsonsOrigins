@@ -47,6 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/listFunctions"
         android:layout_width="429dp"
         android:layout_height="168dp"
         android:layout_marginStart="1dp"
