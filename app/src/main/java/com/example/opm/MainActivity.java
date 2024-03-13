@@ -3,6 +3,7 @@ package com.example.opm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.accounts.AbstractAccountAuthenticator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -23,45 +24,20 @@ public class MainActivity extends AppCompatActivity {
     private LineDataSet datasetEmpty = new LineDataSet(entriesempty, "График первый");
     private ActivityMainBinding binding;
     private ArrayList<ILineDataSet> dataSetsEmpty = new ArrayList();
+    private BuildMathFuntction funtction = new BuildMathFuntction();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        nullChart();
+        funtction.nullChart(binding);
         binding.draw.setOnClickListener(v -> {
-            nullChart();
-            String function = binding.enterfunction.getText().toString();
-            if (function.length() > 10) {
-                Toast.makeText(this, "Недоступно в вашей стране)", Toast.LENGTH_SHORT).show();
-            } else {
-                DoubleEvaluator evaluator = new DoubleEvaluator();
-                ArrayList<Entry> entriesFirst = new ArrayList<>();
-                for (double x = -1000.0; x <= 1000.0; x += 0.1) {
-                    StaticVariableSet<Double> variables = new StaticVariableSet<Double>();
-                    variables.set("x", x);
-                    double y = evaluator.evaluate(function, variables);
-                    entriesFirst.add(new Entry((float) x, (float) y));
-                }
-                LineDataSet datasetFirst = new LineDataSet(entriesFirst, "График первый");
-                ArrayList<ILineDataSet> dataSets = new ArrayList();
-                dataSets.add(datasetFirst);
-                datasetFirst.setDrawCircles(false);
-                datasetFirst.setDrawValues(false);
-                datasetFirst.setMode(LineDataSet.Mode.LINEAR);
-                LineData lineData = new LineData(dataSets);
-                binding.chart.setData(lineData);
-
-                binding.chart.invalidate();
+            try {
+                funtction.draw(binding);
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
             }
         });
     }
-    private void nullChart(){
-        ArrayList<Entry> entriesempty = new ArrayList<>();
-        LineDataSet datasetEmpty = new LineDataSet(entriesempty, "График первый");
-        dataSetsEmpty.add(datasetEmpty);
-        LineData lineData = new LineData(dataSetsEmpty);
-        binding.chart.setData(lineData);
-        binding.chart.invalidate();
-    }
+
 }
