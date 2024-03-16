@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private LineDataSet datasetEmpty = new LineDataSet(entriesempty, "График первый");
     private ActivityMainBinding binding;
     private ArrayList<ILineDataSet> dataSetsEmpty = new ArrayList();
-    private BuildMathFuntction drawing = new BuildMathFuntction();
+    private BuildMathFunction drawing = new BuildMathFunction();
     private ArrayList<String> FunctionsList;
     private ArrayAdapter<String> adapter;
     @Override
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             String text = binding.enterfunction.getText().toString();
             FunctionsList.add(text);
             adapter.notifyDataSetChanged();
+            binding.enterfunction.setText("");
         });
     }
 
