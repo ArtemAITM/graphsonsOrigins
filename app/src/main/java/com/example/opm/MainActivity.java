@@ -18,10 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Entry> entriesempty = new ArrayList<>();
-    private LineDataSet datasetEmpty = new LineDataSet(entriesempty, "График первый");
     private ActivityMainBinding binding;
-    private ArrayList<ILineDataSet> dataSetsEmpty = new ArrayList();
     private BuildMathFunction drawing = new BuildMathFunction();
     private ArrayList<String> FunctionsList;
     private ArrayAdapter<String> adapter;
