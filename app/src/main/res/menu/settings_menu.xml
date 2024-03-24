@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Настройки" />
+    <group android:id="@+id/group_general" android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item1"
+            android:title="Настройка 1"
+            />
+        <item
+            android:id="@+id/menu_item2"
+            android:title="Настройка 2"
+            />
+    </group>
+
+    <group android:id="@+id/group_others">
+        <item
+            android:id="@+id/menu_item3"
+            android:title="Другая настройка"
+            />
+    </group>
+</menu>
