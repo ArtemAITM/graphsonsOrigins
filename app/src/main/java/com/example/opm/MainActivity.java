@@ -7,7 +7,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,18 +40,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         start();
         openKeyboard();
-        binding.draw.setOnClickListener(v -> {
-            for (int i = 0; i < FunctionsList.size(); i++) {
-                drawing.draw(FunctionsList.get(i), i);
-                drawing.draw_all(binding);
-            }
-        });
-
         binding.plus.setOnClickListener(v -> {
             String text = binding.editText.getText().toString();
             FunctionsList.add(text);
             adapter.notifyDataSetChanged();
             binding.editText.setText("");
+        });
+        binding.editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Toast.makeText(MainActivity.this, "UPDATINGx", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                BuildMathFunction.updateChart(binding);
+            }
         });
     }
 

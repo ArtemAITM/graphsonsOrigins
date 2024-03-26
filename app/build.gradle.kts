@@ -11,7 +11,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,7 +31,8 @@ buildFeatures{
 }
 
 dependencies {
-    implementation("com.fathzer:javaluator:3.0.3")
+    implementation("net.objecthunter:exp4j:0.4.8")
+    implementation("org.apache.commons:commons-math3:3.6.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
