@@ -94,11 +94,7 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.editText);
         customKeyboard = new CustomKeyboard(this);
         customKeyboard.setEditText(editText);
-
-        // Получаем InputMethodManager для управления клавиатурой
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        // Скрываем основную клавиатуру при фокусировке на поле ввода
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override

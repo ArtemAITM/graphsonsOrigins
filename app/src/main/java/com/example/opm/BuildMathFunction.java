@@ -39,12 +39,11 @@ public class BuildMathFunction {
         }
     }
 
-    private static final ArrayList<Entry> allEntries = new ArrayList<>(); // Список для всех точек
-
+    private static final ArrayList<Entry> allEntries = new ArrayList<>();
     static void updateChart(ActivityMainBinding binding, String function, int index) {
         allEntries.clear();
         float currentX = -10f;
-        if (currentX <= 10000) {
+        {
 
             float step = 0.01f;
             for (float x = Math.max(currentX + step, -10); x <= 100; x += step) {
