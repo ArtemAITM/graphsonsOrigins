@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
     ActivityHomePageBinding binding;
-    private View view;
     String[] elements = new String[] {"Калькулятор", "Графический калькулятор",
             "Решение уравнений", "Скоро в приложении..."};
     @Override
