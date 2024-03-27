@@ -13,11 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildMathFunction {
-    private HashMap<String, LineDataSet> dataSetMap = new HashMap<>();
-    private ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-    private String[] names = new String[] {"первый", "второй", "третий"
+    public static String[] names = new String[] {"первый", "второй", "третий"
             , "четвертый", "пятый", "шестой", "седьмой", "восьмой", "девятый", "десятый"};
-    private int[] colors = new int[]{Color.RED, Color.GREEN, Color.MAGENTA, Color.BLACK, Color.BLUE
+    private static int[] colors = new int[]{Color.RED, Color.GREEN, Color.MAGENTA, Color.BLACK, Color.BLUE
             ,Color.YELLOW, R.color.purple, R.color.brown, R.color.pink};
 
     private static float calculateFunction(String function, float x) {
@@ -41,33 +39,29 @@ public class BuildMathFunction {
         }
     }
 
-    private static boolean isInitialUpdate;
-    private static float currentX;
-    private static ArrayList<Entry> allEntries = new ArrayList<>(); // Список для всех точек
+    private static final ArrayList<Entry> allEntries = new ArrayList<>(); // Список для всех точек
 
-    static void updateChart(ActivityMainBinding binding) {
-        String function = binding.editText.getText().toString();
+    static void updateChart(ActivityMainBinding binding, String function, int index) {
         allEntries.clear();
-        isInitialUpdate = true;
-        currentX  = -10f;
-        if (isInitialUpdate || currentX <= 10000) {
-            // Добавляем точки в список всех точек за пределами текущего диапазона x от -10 до 100
+        float currentX = -10f;
+        if (currentX <= 10000) {
+
             float step = 0.01f;
             for (float x = Math.max(currentX + step, -10); x <= 100; x += step) {
                 float y = calculateFunction(function, x);
                 allEntries.add(new Entry(x, y));
             }
         }
-        if (isInitialUpdate || currentX <= 100 || currentX >= -10000) {
+        if (currentX <= 100 || currentX >= -10000) {
             float step = 0.01f;
             for (float x = Math.max(currentX + step, -10000); x <= 100; x += step) {
                 float y = calculateFunction(function, x);
                 allEntries.add(new Entry(x, y));
             }
-            isInitialUpdate = false;
             binding.chart.centerViewTo(0, 0, LEFT);
         }
-        LineDataSet dataSet = new LineDataSet(allEntries, "Function");
+        LineDataSet dataSet = new LineDataSet(allEntries, "График " + names[index]);
+        dataSet.setColor(colors[index]);
         LineData lineData = new LineData(dataSet);
         binding.chart.setData(lineData);
         binding.chart.setVisibleXRangeMinimum(0);

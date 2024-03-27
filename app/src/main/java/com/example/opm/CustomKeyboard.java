@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-
 public class CustomKeyboard extends GridLayout implements View.OnClickListener {
     private String[] listSTEPENI = new String[] {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 

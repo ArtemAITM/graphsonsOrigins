@@ -46,18 +46,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             binding.editText.setText("");
         });
-        binding.editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Toast.makeText(MainActivity.this, "UPDATINGx", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                BuildMathFunction.updateChart(binding);
+        binding.draw.setOnClickListener(v -> {
+            for (int i = 0; i < FunctionsList.toArray().length; i++) {
+                BuildMathFunction.updateChart(binding, FunctionsList.get(i), i);
             }
         });
     }
