@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class MathCalculator extends AppCompatActivity {
     private ActivityMathCalculatorBinding binding;
-    private ArrayList<String> FunctionsList;
-    private ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
