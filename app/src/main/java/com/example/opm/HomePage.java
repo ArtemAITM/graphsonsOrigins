@@ -40,9 +40,6 @@ public class HomePage extends AppCompatActivity {
             Intent i = new Intent(this, MathCalculator.class);
             startActivity(i);
         });
-
-        //на будущее можно сделать техподдержку
-
     }
 
 }
