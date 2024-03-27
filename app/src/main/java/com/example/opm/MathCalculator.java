@@ -10,7 +10,7 @@ import com.example.opm.databinding.ActivityMathCalculatorBinding;
 import java.util.ArrayList;
 
 public class MathCalculator extends AppCompatActivity {
-    private ActivityMathCalculatorBinding binding;
+    private ActivityMathCalculatorBinding binding; //test comment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
