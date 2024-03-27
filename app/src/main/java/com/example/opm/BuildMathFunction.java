@@ -31,7 +31,6 @@ public class BuildMathFunction {
                 throw new IllegalArgumentException("Неверное выражение: " + validationResult.getErrors());
             }
 
-            // Вычисляем значение функции для данного x
             return (float) e.evaluate();
         } catch (Exception ex) {
             ex.printStackTrace();
