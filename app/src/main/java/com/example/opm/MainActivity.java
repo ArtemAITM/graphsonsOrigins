@@ -28,7 +28,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
     private BuildMathFunction drawing = new BuildMathFunction();
     private ArrayList<String> FunctionsList;
     private ArrayAdapter<String> adapter;
@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
             binding.editText.setText("");
         });
         binding.draw.setOnClickListener(v -> {
-            for (int i = 0; i < FunctionsList.toArray().length; i++) {
-                BuildMathFunction.updateChart(binding, FunctionsList.get(i), i);
+            try {
+                BuildMathFunction.connectChart(FunctionsList, binding);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
     }
