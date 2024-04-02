@@ -150,7 +150,7 @@ public class BuildMathFunction  {
         finally {
             addPointsToChart(index, expandedEntries);
         }
-    }
+    }//12
     public static void expandDataSetPlus(String function, int index, float DRAWX) {
         ArrayList<Entry> expandedEntries = new ArrayList<>();
         for (float x = DRAWX; x <= DRAWX+10; x += 0.001f) {
