@@ -2,14 +2,11 @@ package com.example.opm;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,26 +16,24 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
-
 import com.example.opm.databinding.ActivityMainBinding;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public ActivityMainBinding binding;
-    private BuildMathFunction drawing = new BuildMathFunction();
     private ArrayList<String> FunctionsList;
     private ArrayAdapter<String> adapter;
     private CustomKeyboard customKeyboard;
     private InputMethodManager inputMethodManager;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        start();
+        try {
+            start();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         openKeyboard();
         binding.plus.setOnClickListener(v -> {
             String text = binding.editText.getText().toString();
@@ -48,17 +43,18 @@ public class MainActivity extends AppCompatActivity {
         });
         binding.draw.setOnClickListener(v -> {
             try {
-                BuildMathFunction.connectChart(FunctionsList, binding);
+                BuildMathFunction buildMathFunction =  new BuildMathFunction(this);
+                buildMathFunction.connectChart(FunctionsList, binding);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    protected void start(){
+    protected void start() throws InterruptedException {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        Thread.sleep(1000);
         setContentView(binding.getRoot());
-        //funtction.nullChart(binding);
         FunctionsList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, R.layout.function_item, R.id.FunctionString, FunctionsList);
         binding.listFunctions.setAdapter(adapter);
@@ -92,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         builder.show();
     }
+
     protected void openKeyboard(){
         EditText editText = findViewById(R.id.editText);
         customKeyboard = new CustomKeyboard(this);
