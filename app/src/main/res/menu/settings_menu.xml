@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_settings"
         android:title="Настройки" />
@@ -13,11 +14,19 @@
             android:title="Настройка 2"
             />
     </group>
+    <group android:id="@+id/group_divider">
+        <item
+            android:id="@+id/Center_X"
+            android:title="@string/cntrX" />
+        <item
+            android:id="@+id/Center_Y"
+            android:title="@string/cntrY" />
+    </group>
 
     <group android:id="@+id/group_others">
         <item
-            android:id="@+id/menu_item3"
-            android:title="Другая настройка"
+            android:id="@+id/save"
+            android:title="@string/save"
             />
     </group>
 </menu>

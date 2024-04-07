@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,13 +19,20 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class CustomKeyboard extends GridLayout implements View.OnClickListener {
     private String[] listSTEPENI = new String[] {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
     private EditText editText;
     public String Function = "";
+    public Context context;
     public CustomKeyboard(Context context) {
         this(context, null);
+        this.context = context;
     }
 
     public CustomKeyboard(Context context, AttributeSet attrs) {
@@ -44,6 +52,7 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
     }
 
     private void setupKeys() {
+        //Number buttons initialize
         findViewById(R.id.button0).setOnClickListener(this);
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
@@ -54,35 +63,21 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
         findViewById(R.id.button7).setOnClickListener(this);
         findViewById(R.id.button8).setOnClickListener(this);
         findViewById(R.id.button9).setOnClickListener(this);
-        findViewById(R.id.buttonSQRT).setOnClickListener(this);
-        findViewById(R.id.buttonCOS).setOnClickListener(this);
-        findViewById(R.id.buttonSIN).setOnClickListener(this);
-        findViewById(R.id.buttonTG).setOnClickListener(this);
-        findViewById(R.id.buttonCTG).setOnClickListener(this);
-        findViewById(R.id.buttonDROB).setOnClickListener(this);
-        findViewById(R.id.buttonRAVNO).setOnClickListener(this);
+        //functions initialize
         findViewById(R.id.buttonPLUS).setOnClickListener(this);
-        findViewById(R.id.buttonDIVIDE).setOnClickListener(this);
-        findViewById(R.id.buttonMULTIPLY).setOnClickListener(this);
         findViewById(R.id.buttonMINUS).setOnClickListener(this);
-        findViewById(R.id.buttonX).setOnClickListener(this);
-        findViewById(R.id.buttonY).setOnClickListener(this);
-        findViewById(R.id.buttonABS).setOnClickListener(this);
-        findViewById(R.id.buttonLess).setOnClickListener(this);
-        findViewById(R.id.buttonLeftBracket).setOnClickListener(this);
-        findViewById(R.id.buttonRightBracket).setOnClickListener(this);
-        findViewById(R.id.buttonLessSame).setOnClickListener(this);
-        findViewById(R.id.buttonMoreSame).setOnClickListener(this);
-        findViewById(R.id.buttonMore).setOnClickListener(this);
-        findViewById(R.id.buttonSQRTN).setOnClickListener(this::N);
-        findViewById(R.id.buttonpowAB).setOnClickListener(this::N);
-        findViewById(R.id.buttonDeleteSymbol).setOnClickListener(this::onClickDELETE);
-        findViewById(R.id.buttonRightMOVE).setOnClickListener(this::RIGHT_MOVE);
-        findViewById(R.id.buttonLeftMOVE).setOnClickListener(this::LEFT_MOVE);
-        findViewById(R.id.buttonpowSettings).setOnClickListener(this::showSettingsMenu);
+        findViewById(R.id.buttonDIVIDE).setOnClickListener(this);
+        findViewById(R.id.buttonDROB).setOnClickListener(this);
+        findViewById(R.id.buttonMULTIPLY).setOnClickListener(this);
 
-        Toast.makeText(this.getContext(), "до сюда добрались", Toast.LENGTH_SHORT).show();
     }
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onClick(View v) {
+        Button b = (Button) v;
+        editText.setText(editText.getText().toString() + b.getText().toString().replaceAll(" ", ""));
+    }
+
 
     private void showSettingsMenu(View view) {
         PopupMenu popup = new PopupMenu(this.getContext(), view);
@@ -99,76 +94,65 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
                 return false;
             }
         });
+        MenuItem X = popup.getMenu().findItem(R.id.Center_X);
+        MenuItem Y = popup.getMenu().findItem(R.id.Center_Y);
+        MenuItem SVO = popup.getMenu().findItem(R.id.save);
+        final int[] cx = {0};
+        final int[] cy = {0};
+        X.setOnMenuItemClickListener(v -> {
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            EditText et = new EditText(context);
+            alert.setMessage("Введите центр по X");
+            alert.setView(et);
+            alert.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    cx[0] = Integer.parseInt(et.getText().toString());
+                }
+            });
+            alert.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d("юзер лох", "этот юзер точно лох");
+                }
+            });
+            alert.show();
+            return false;
+        });
+        Y.setOnMenuItemClickListener(v -> {
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            EditText et = new EditText(context);
+            alert.setMessage("Введите центр по X");
+            alert.setView(et);
+            alert.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    cy[0] = Integer.parseInt(et.getText().toString());
+                }
+            });
+            alert.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d("юзер лох", "этот юзер точно лох");
+                }
+            });
+            alert.show();
+            return true;
+        });
+        SVO.setOnMenuItemClickListener(v -> {
+            int k = cx[0];
+            int k2 = cy[0];
+            try {
+                FileOutputStream f = new FileOutputStream("Center.txt");
+                f.write(String.valueOf(k).getBytes());
+                f.write("\n".getBytes());
+                f.write(String.valueOf(k2).getBytes());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return true;
+        });
 
         popup.show();
-    }
-
-
-    private void N(View view) {
-        Button button = (Button) view;
-        final EditText editText1 = new EditText(this.getContext());
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setTitle("Введите b");
-        builder.setView(editText1);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String n = editText1.getText().toString();
-                if (Integer.parseInt(n) > 9 || Integer.parseInt(n) < 0) {
-                    dialog.cancel();
-                } else {
-                    String text = editText.getText().toString();
-                    if (button.getText().toString().equals("√")){
-                        editText.setText(text + listSTEPENI[Integer.parseInt(n)
-                                ] + button.getText().toString().replaceAll(" ", "").replaceAll("ᵑ", ""));
-                        Function = Function + n + "√";
-                    }
-                    else {
-                        editText.setText(text + button.getText()
-                                .toString().replaceAll(" ", "") + listSTEPENI[Integer.parseInt(n)]);
-                        Function = Function + "^" + n;
-                    }
-                }
-            }
-        }).setNegativeButton("ОТМЕНА", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
-    }
-
-    private void RIGHT_MOVE(View view) {
-        int position = editText.getSelectionStart();
-        if (position < editText.length()){
-            editText.setSelection(position + 1);
-        }
-    }
-    private void LEFT_MOVE(View view) {
-        int position = editText.getSelectionStart();
-        if (position > 0){
-            editText.setSelection(position - 1);
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onClick(View v) {
-        Button button = (Button) v;
-        editText.setText(editText.getText() + button.getText().toString().replaceAll(" ", ""));
-        if(button.getText() == "a"){
-            Function += "^2";
-        }
-        else {
-            Function += button.getText().toString();
-        }
-    }
-
-    private void onClickDELETE(View v) throws IndexOutOfBoundsException{
-        String text = editText.getText().toString();
-        editText.setText(text.substring(0, text.length() - 1));
     }
 }

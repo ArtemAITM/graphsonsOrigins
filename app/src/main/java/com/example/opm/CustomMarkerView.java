@@ -2,15 +2,13 @@ package com.example.opm;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.utils.MPPointF;
-
 import java.text.DecimalFormat;
-import java.util.ConcurrentModificationException;
 
 @SuppressLint("ViewConstructor")
 public class CustomMarkerView extends MarkerView {
@@ -27,12 +25,14 @@ public class CustomMarkerView extends MarkerView {
         float x = e.getX();
         float y = e.getY();
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        textView.setText("(" + decimalFormat.format(x) + ", " + decimalFormat.format(y) + ")");
+        textView.setTextSize(10);
+        textView.setMaxLines(2);
+        String truncatedText =
+                TextUtils.ellipsize("(" + decimalFormat.format(x)
+                        + ", " + decimalFormat.format(y) + ")", textView.getPaint()
+                        , textView.getWidth(), TextUtils.TruncateAt.END).toString();
+        textView.setText(truncatedText);
     }
 
-    @Override
-    public MPPointF getOffset() {
-        return new MPPointF(0, getHeight());
-    }
 }
 

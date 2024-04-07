@@ -11,4 +11,7 @@
     <string name="left"><![CDATA[<--]]></string>
     <string name="right"><![CDATA[-->]]></string>
     <string name="enter_your_function">Enter your function</string>
+    <string name="cntrX">Центр графика по X:</string>
+    <string name="cntrY">Центр графика по Y:</string>
+    <string name="save">Сохранить</string>
 </resources>

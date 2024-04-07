@@ -34,16 +34,17 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        openKeyboard();
+        BuildMathFunction buildMathFunction =  new BuildMathFunction(this);
+        //openKeyboard();
         binding.plus.setOnClickListener(v -> {
             String text = binding.editText.getText().toString();
             FunctionsList.add(text);
             adapter.notifyDataSetChanged();
             binding.editText.setText("");
         });
+
         binding.draw.setOnClickListener(v -> {
             try {
-                BuildMathFunction buildMathFunction =  new BuildMathFunction(this);
                 buildMathFunction.connectChart(FunctionsList, binding);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
