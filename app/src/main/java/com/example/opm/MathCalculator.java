@@ -1,21 +1,19 @@
 package com.example.opm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+
+import androidx.annotation.Nullable;
 
 import com.example.opm.databinding.ActivityMathCalculatorBinding;
 
-import java.util.ArrayList;
-
-public class MathCalculator extends AppCompatActivity {
+public class MathCalculator extends Activity {//guy
     private ActivityMathCalculatorBinding binding;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMathCalculatorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
 
+    }
 }

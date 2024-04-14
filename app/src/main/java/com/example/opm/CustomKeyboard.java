@@ -69,6 +69,25 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
         findViewById(R.id.buttonDIVIDE).setOnClickListener(this);
         findViewById(R.id.buttonDROB).setOnClickListener(this);
         findViewById(R.id.buttonMULTIPLY).setOnClickListener(this);
+        //hard initialize
+        findViewById(R.id.buttonSQRT).setOnClickListener(this::SQRT);
+        findViewById(R.id.buttonpowA2).setOnClickListener(this::pow2);
+        findViewById(R.id.buttonpowAB).setOnClickListener(this::powN);
+        findViewById(R.id.buttonpowSettings).setOnClickListener(this::showSettingsMenu);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void pow2(View view) {
+        editText.setText(editText.getText().toString() + "^2");
+    }
+    @SuppressLint("SetTextI18n")
+    private void powN(View view) {
+        editText.setText(editText.getText().toString() + "^");
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void SQRT(View v){
+        editText.setText(editText.getText().toString() + "sqrt");
 
     }
     @SuppressLint("SetTextI18n")

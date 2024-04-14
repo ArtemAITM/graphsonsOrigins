@@ -1,5 +1,6 @@
 package com.example.opm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,7 +19,12 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.example.opm.databinding.ActivityMainBinding;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     public ActivityMainBinding binding;
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        BuildMathFunction buildMathFunction =  new BuildMathFunction(this);
+        BuildMathFunction buildMathFunction = new BuildMathFunction(this);
         //openKeyboard();
         binding.plus.setOnClickListener(v -> {
             String text = binding.editText.getText().toString();
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         binding.draw.setOnClickListener(v -> {
             try {
                 buildMathFunction.connectChart(FunctionsList, binding);
+                buildMathFunction.setNullData();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -90,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    protected void openKeyboard(){
+    protected void openKeyboard() {
         EditText editText = findViewById(R.id.editText);
         customKeyboard = new CustomKeyboard(this);
         customKeyboard.setEditText(editText);

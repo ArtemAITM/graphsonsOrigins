@@ -14,8 +14,10 @@ dependencyResolutionManagement {
             url = uri("https://www.jitpack.io")
         }
 
+
     }
 }
+
 
 rootProject.name = "OPM"
 include(":app")
