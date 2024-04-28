@@ -1,22 +1,19 @@
 package com.example.opm;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
 import com.example.opm.databinding.ActivityHomePageBinding;
-
-import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
     ActivityHomePageBinding binding;
     String[] elements = new String[] {"Калькулятор", "Графический калькулятор",
-            "Решение уравнений", "Скоро в приложении..."};
+            "Построение простейших круговых диаграм", "Скоро в приложении..."};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +21,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.calculator.setOnClickListener(v -> {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            @SuppressLint("CommitTransaction") FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for(int i = 0; i < 4; ++i){
                 GraphicalFragment fragment = new GraphicalFragment();
                 fragment.updateText(elements[i]);
@@ -36,7 +33,7 @@ public class HomePage extends AppCompatActivity {
             startActivity(i);
         });
         binding.uravnenia.setOnClickListener(v -> {
-            Intent i = new Intent(this, MathCalculator.class);
+            Intent i = new Intent(this, PieCharts.class);
             startActivity(i);
         });
     }
