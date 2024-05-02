@@ -72,7 +72,7 @@ public class XLSXDiagram extends AppCompatActivity {
             System.out.println(stringBuilder);
 
             inputStream.close();
-        } catch (IOException e) {
+        } catch (IOException e) {//
             System.out.println("нЕ норм");
             e.printStackTrace();
         }
