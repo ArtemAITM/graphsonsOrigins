@@ -36,6 +36,9 @@ public class HomePage extends AppCompatActivity {
             Intent i = new Intent(this, PieCharts.class);
             startActivity(i);
         });
+        binding.diagrams.setOnClickListener(v -> {
+            startActivity(new Intent(this, XLSXDiagram.class));
+        });
     }
 
 }

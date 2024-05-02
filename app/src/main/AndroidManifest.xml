@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".XLSXDiagram"
+            android:exported="false" />
+        <activity
             android:name=".HardChartsXLSX"
             android:exported="false" />
         <activity
