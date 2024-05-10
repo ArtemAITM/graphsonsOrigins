@@ -7,36 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".XLSXDiagram">
 
-    <Button
-        android:id="@+id/Add_FILE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="50dp"
-        android:text="Выберите файл"
+    <TextView
+        android:id="@+id/ShowFilename"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="672dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="      "/>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="395dp"
+        android:layout_height="555dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="395dp"
+        android:layout_height="555dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/FILE_NAME"
-        android:layout_width="352dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:text="___________________________________________________"
+    </com.github.mikephil.charting.charts.BarChart>
+
+    <ImageButton
+        android:id="@+id/typeChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/settings2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:layout_width="409dp"
-        android:id="@+id/DIAGRAM"
-        android:layout_height="451dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="161dp"
-        android:layout_marginEnd="1dp"
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="680dp"
+        android:layout_marginEnd="360dp"
+        android:background="@drawable/send"
+        android:id="@+id/AddFILE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Add_FILE" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

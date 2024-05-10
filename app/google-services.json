@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966152416641",
+    "project_id": "graphsons-bdc12",
+    "storage_bucket": "graphsons-bdc12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966152416641:android:802ccbbaa541036d908c80",
+        "android_client_info": {
+          "package_name": "com.example.opm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARLUuzuYG6bV28indXhSw1AO8d3HFgwB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

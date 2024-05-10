@@ -15,4 +15,7 @@
     <string name="cntrY">Центр графика по Y:</string>
     <string name="save">Сохранить</string>
     <string name="xlsx_xls">Выберите XLSX или XLS файл</string>
+    <string name="FirstButton">Построение диаграмм из файлов</string>
+    <string name="SecondButton">Построение математических функций</string>
+    <string name="ThirdButton">Простые диаграммы</string>
 </resources>

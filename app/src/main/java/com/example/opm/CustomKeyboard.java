@@ -4,12 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.Editable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -103,15 +98,12 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.settings_menu, popup.getMenu());
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.action_settings) {
-                    System.out.println("РОБОТАЕТ");
-                    return true;
-                }
-                return false;
+        popup.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.action_settings) {
+                System.out.println("РОБОТАЕТ");
+                return true;
             }
+            return false;
         });
         MenuItem X = popup.getMenu().findItem(R.id.Center_X);
         MenuItem Y = popup.getMenu().findItem(R.id.Center_Y);

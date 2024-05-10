@@ -1,7 +1,6 @@
-import java.util.regex.Pattern.compile
-
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -33,9 +32,10 @@ buildFeatures{
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation("org.apache.poi:poi-ooxml:3.9")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation("net.objecthunter:exp4j:0.4.8")
     implementation("org.apache.commons:commons-math3:3.6.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")

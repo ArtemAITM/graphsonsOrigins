@@ -1,48 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage">
+    tools:context=".HomePage"
+    android:background="@drawable/graphstockimage">
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+    <android.widget.Button
+        android:id="@+id/MenuButton1"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@null"
+        android:elevation="4dp"
+        android:rotation="-4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/FirstButton"
+        style="@style/some_id"
+        android:fontFamily="@font/semi_bold"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/diagrams"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="HARD_DIAGRAMS" />
+    <android.widget.Button
+        android:id="@+id/MenuButton2"
+        style="@style/some_id"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="122dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@null"
+        android:elevation="4dp"
+        android:fontFamily="@font/semi_bold"
+        android:rotation="-4"
+        android:text="@string/SecondButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/mathFunctions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:rotationX="0"
-                android:text="Построение графиков функций" />
 
-            <Button
-                android:id="@+id/uravnenia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Решение уравнений" />
+    <android.widget.Button
+        android:id="@+id/MenuButton3"
+        style="@style/some_id"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@null"
+        android:elevation="4dp"
+        android:fontFamily="@font/semi_bold"
+        android:rotation="-4"
+        android:text="@string/ThirdButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/calculator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Калькулятор" />
-        </LinearLayout>
-    </ScrollView>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="656dp"
+        android:background="@drawable/informate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="656dp"
+        android:background="@drawable/settings1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
