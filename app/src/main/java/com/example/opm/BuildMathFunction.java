@@ -32,7 +32,7 @@ public class BuildMathFunction {
     private static final int[] colors = new int[]{Color.RED, Color.GREEN, Color.MAGENTA, Color.BLACK, Color.BLUE
             , Color.YELLOW, R.color.purple, R.color.brown, R.color.pink};
     private static final ArrayList<String> functions = new ArrayList<>();
-    private Context context;
+    private final Context context;
     @SuppressLint("StaticFieldLeak")
     public static ActivityMainBinding binding;
     public static int COMPLETE = 0;

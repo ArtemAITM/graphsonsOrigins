@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CustomKeyboard extends GridLayout implements View.OnClickListener {
-    private String[] listSTEPENI = new String[] {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+    private final String[] listSTEPENI = new String[] {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
     private EditText editText;
     public String Function = "";
