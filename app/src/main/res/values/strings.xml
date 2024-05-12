@@ -18,4 +18,5 @@
     <string name="FirstButton">Построение диаграмм из файлов</string>
     <string name="SecondButton">Построение математических функций</string>
     <string name="ThirdButton">Простые диаграммы</string>
+    <string name="add">Add</string>
 </resources>
