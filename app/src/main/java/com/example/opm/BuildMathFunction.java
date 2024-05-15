@@ -24,7 +24,7 @@ import net.objecthunter.exp4j.ValidationResult;
 
 import java.util.ArrayList;
 import java.util.List;
-
+///xdcvbnm,
 
 public class BuildMathFunction {
     public static String[] names = new String[]{"первый", "второй", "третий"
