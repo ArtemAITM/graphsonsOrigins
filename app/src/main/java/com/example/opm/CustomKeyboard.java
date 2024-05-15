@@ -42,11 +42,7 @@ public class CustomKeyboard extends GridLayout implements View.OnClickListener {
 
     }
 
-    public void setEditText(EditText editText) {
-        this.editText = editText;
-    }
-
-    private void setupKeys() {
+    protected void setupKeys() {
         //Number buttons initialize
         findViewById(R.id.button0).setOnClickListener(this);
         findViewById(R.id.button1).setOnClickListener(this);

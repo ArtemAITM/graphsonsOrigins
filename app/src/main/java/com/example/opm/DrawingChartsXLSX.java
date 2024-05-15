@@ -25,7 +25,7 @@ public class DrawingChartsXLSX {
     }
     public void DRAW(){
         CheckTypeDiagram();
-        System.out.println("Отправлено на проверку");
+        System.out.println("Отправлено на проверку");///ор
     }
     private void CheckTypeDiagram(){
         if (binding.pieChart.getVisibility() == View.VISIBLE){
