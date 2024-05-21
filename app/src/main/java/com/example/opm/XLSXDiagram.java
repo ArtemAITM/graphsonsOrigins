@@ -9,18 +9,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.PopupMenu;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.opm.databinding.ActivityXlsxdiagramBinding;
 import com.github.mikephil.charting.data.BarEntry;
@@ -111,7 +104,6 @@ public class XLSXDiagram extends AppCompatActivity {
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(NumberSheet);
             if (X1 - X0 != 1) {
-                System.out.println("Файл должен содержать только два столбца.");
                 throw new IllegalArgumentException("Файл должен содержать только два столбца.");
             }else {
                 for(int rowNum = Y0; rowNum <= Y1; ++rowNum){
@@ -138,7 +130,6 @@ public class XLSXDiagram extends AppCompatActivity {
             System.out.println("нЕ норм");
             e.printStackTrace();
         }
-        //drawDiagram();
     }
 
 
